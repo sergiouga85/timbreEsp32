@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel='preconnect' href='https://fonts.googleapis.com'>
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+    <link href='https://fonts.googleapis.com/css2?family=Abel&display=swap' rel='stylesheet'>
+    <link rel="stylesheet" href="../src/style/style.css">
+    <title>Horarios timbres ISJ A-355 </title>
+</head>
+<style>
+    * {
+        font-family: 'Abel', sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background-color: rgb(224, 224, 224);
+    }
+
+    img {
+        width: 100px;
+        height: 100px;
+    }
+
+    header {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        height: 150px;
+        width: 100%;
+        background-color: rgb(33, 37, 41);
+    }
+
+    h1 {
+        margin-bottom: 0px;
+    }
+
+    .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        font-size: 13px;
+        color: white;
+        width: 450px;
+        border-radius: 5px;
+    }
+
+    .titulo-h2 {
+        font-size: 12px;
+        color: white;
+        margin-top: 0px;
+    }
+
+    .checkbox1 {
+        height: 24px;
+        width: 24px;
+    }
+
+    .classTime {
+        height: 20px;
+        width: 90px;
+        text-align: center;
+
+    }
+
+    .grid-container {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        justify-items: center;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(12, 1fr);
+        max-width: 20%;
+        padding-bottom: 5px;
+        margin: 10px;
+        padding-left: 16px;
+        padding-right: 20px;
+        gap: 5px
+    }
+
+    .grid-container h5:nth-child(2) {
+        grid-column: 2/5;
+    }
+
+    .grid-container input:nth-child(12),
+    .grid-container input:nth-child(22),
+    .grid-container input:nth-child(32),
+    .grid-container input:nth-child(42),
+    .grid-container input:nth-child(52),
+    .grid-container input:nth-child(62),
+    .grid-container input:nth-child(72),
+    .grid-container input:nth-child(82),
+    .grid-container input:nth-child(92),
+    .grid-container input:nth-child(102),
+    .grid-container input:nth-child(112),
+    .grid-container input:nth-child(122),
+    .grid-container input:nth-child(132),
+    .grid-container input:nth-child(142),
+    .grid-container input:nth-child(152),
+    .grid-container input:nth-child(162) {
+        grid-column: 2/5;
+
+
+    }
+
+    .grid-container .classTime:nth-child(10),
+    .grid-container .classTime:nth-child(20),
+    .grid-container .classTime:nth-child(30),
+    .grid-container .classTime:nth-child(40),
+    .grid-container .classTime:nth-child(50),
+    .grid-container .classTime:nth-child(60),
+    .grid-container .classTime:nth-child(70),
+    .grid-container .classTime:nth-child(80),
+    .grid-container .classTime:nth-child(90),
+    .grid-container .classTime:nth-child(100),
+    .classTime:nth-child(110),
+    .grid-container .classTime:nth-child(120),
+    .grid-container .classTime:nth-child(130),
+    .grid-container .classTime:nth-child(140),
+    .grid-container .classTime:nth-child(150),
+    .grid-container .classTime:nth-child(160) {
+        grid-column: 10/11;
+    }
+
+    .tiempoTimbre {
+        height: 20px;
+        width: 20px;
+        text-align: center;
+    }
+
+    .btnGuardar,
+    .btntimbre {
+        height: 50px;
+        width: 100%;
+        font-size: 25px;
+        background-color: rgb(33, 37, 41);
+        color: white;
+        border-radius: 5px;
+        box-shadow: 8px 7px 5px 0px rgba(255, 255, 255, 0.48);
+        margin-bottom: 10px;
+    }
+
+    .btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 368px;
+        padding-right: 25px;
+        padding-left: 20px;
+        margin-bottom: 40px;
+    }
+
+    .btnGuardar:hover,
+    .btntimbre:hover {
+        background-color: rgb(81, 81, 81);
+    }
+
+    footer {
+        height: 150px;
+        background-color: rgb(33, 37, 41);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    footer .parrafo-pie {
+        text-align: center;
+        margin: 0px;
+        color: white;
+        font-size: 18px;
+        padding: 0px 20px;
+    }
+
+    @media screen and (max-width:576px) {
+
+        .btnGuardar,
+        .btntimbre {
+            width: 98%;
+        }
+    }
+
+</style>
+<body>
+
+    <header>
+        <div class='logo'>
+            <img
+                src="https://firebasestorage.googleapis.com/v0/b/logoinstituto-f85b0.appspot.com/o/logo2.png?alt=media&token=6ae8f448-77f8-4c29-80ec-d80cae7535fb">
+            <div class='titulo-h2'>
+                <h1>SERVIDOR HORARIOS TIMBRES</h1>
+                <h2>FORMATO 24HS</h2>
+            </div>
+        </div>
+    </header>
+    <center>
+        <form id="horarioForm" action="/guardar" method="post">
+            <div class='grid-container'>
+                <h5>ACT.</h5>
+                <h5>TIME</h5>
+                <h5>L</h5>
+                <h5>M</h5>
+                <h5>M</h5>
+                <h5>j</h5>
+                <h5>V</h5>
+                <h5>S</h5>
+                <h5>D</h5>
+                <h5>SEG</h5>
+                <input class='checkbox1' id='activacion0' type='checkbox' value=''>
+                <input class='classTime' type='time' id='time0' value='00:00:00' step='1'>
+                <input class='checkbox1' id='lunesHorario0' type='checkbox' value=''>
+                <input class='checkbox1' id='martesHorario0' type='checkbox' value=''>
+                <input class='checkbox1' id='miercolesHorario0' type='checkbox' value=''>
+                <input class='checkbox1' id='juevesHorario0' type='checkbox' value=''>
+                <input class='checkbox1' id='viernesHorario0' type='checkbox' value=''>
+                <input class='checkbox1' id='sabadoHorario0' type='checkbox' value=''>
+                <input class='checkbox1' id='domingoHorario0' type='checkbox' value=''>
+                <input class='tiempoTimbre' id='duracionTimbre0' type='text' value=''>
+                <input class='checkbox1' id='activacion1' type='checkbox' value=''>
+                <input class='classTime' type='time' id='time1' value='00:00:00' step='1'>
+                <input class='checkbox1' id='lunesHorario1' type='checkbox' value=''>
+                <input class='checkbox1' id='martesHorario1' type='checkbox' value=''>
+                <input class='checkbox1' id='miercolesHorario1' type='checkbox' value=''>
+                <input class='checkbox1' id='juevesHorario1' type='checkbox' value=''>
+                <input class='checkbox1' id='viernesHorario1' type='checkbox' value=''>
+                <input class='checkbox1' id='sabadoHorario1' type='checkbox' value=''>
+                <input class='checkbox1' id='domingoHorario1' type='checkbox' value=''>
+                <input class='tiempoTimbre' id='duracionTimbre1' type='text' value=''>
+                <input class='checkbox1' id='activacion2' type='checkbox' value=''>
+                <input class='classTime' type='time' id='time2' value='00:00:00' step='1'>
+                <input class='checkbox1' id='lunesHorario2' type='checkbox' value=''>
+                <input class='checkbox1' id='martesHorario2' type='checkbox' value=''>
+                <input class='checkbox1' id='miercolesHorario2' type='checkbox' value=''>
+                <input class='checkbox1' id='juevesHorario2' type='checkbox' value=''>
+                <input class='checkbox1' id='viernesHorario2' type='checkbox' value=''>
+                <input class='checkbox1' id='sabadoHorario2' type='checkbox' value=''>
+                <input class='checkbox1' id='domingoHorario2' type='checkbox' value=''>
+                <input class='tiempoTimbre' id='duracionTimbre2' type='text' value=''>
+                <input class='checkbox1' id='activacion3' type='checkbox' value=''>
+                <input class='classTime' type='time' id='time3' value='00:00:00' step='1'>
+                <input class='checkbox1' id='lunesHorario3' type='checkbox' value=''>
+                <input class='checkbox1' id='martesHorario3' type='checkbox' value=''>
+                <input class='checkbox1' id='miercolesHorario3' type='checkbox' value=''>
+                <input class='checkbox1' id='juevesHorario3' type='checkbox' value=''>
+                <input class='checkbox1' id='viernesHorario3' type='checkbox' value=''>
+                <input class='checkbox1' id='sabadoHorario3' type='checkbox' value=''>
+                <input class='checkbox1' id='domingoHorario3' type='checkbox' value=''>
+                <input class='tiempoTimbre' id='duracionTimbre3' type='text' value=''>
+                <input class='checkbox1' id='activacion4' type='checkbox' value=''>
+                <input class='classTime' type='time' id='time4' value='00:00:00' step='1'>
+                <input class='checkbox1' id='lunesHorario4' type='checkbox' value=''>
+                <input class='checkbox1' id='martesHorario4' type='checkbox' value=''>
+                <input class='checkbox1' id='miercolesHorario4' type='checkbox' value=''>
+                <input class='checkbox1' id='juevesHorario4' type='checkbox' value=''>
+                <input class='checkbox1' id='viernesHorario4' type='checkbox' value=''>
+                <input class='checkbox1' id='sabadoHorario4' type='checkbox' value=''>
+                <input class='checkbox1' id='domingoHorario4' type='checkbox' value=''>
+                <input class='tiempoTimbre' id='duracionTimbre4' type='text' class=value=''>
+                <input class='checkbox1' id='activacion5' type='checkbox' value=''>
+                <input class='classTime' type='time' id='time5' value='00:00:00' step='1'>
+                <input class='checkbox1' id='lunesHorario5' type='checkbox' value=''>
+                <input class='checkbox1' id='martesHorario5' type='checkbox' value=''>
+                <input class='checkbox1' id='miercolesHorario5' type='checkbox' value=''>
+                <input class='checkbox1' id='juevesHorario5' type='checkbox' value=''>
+                <input class='checkbox1' id='viernesHorario5' type='checkbox' value=''>
+                <input class='checkbox1' id='sabadoHorario5' type='checkbox' value=''>
+                <input class='checkbox1' id='domingoHorario5' type='checkbox' value=''>
+                <input class='tiempoTimbre' id='duracionTimbre5' type='text' value=''>
+                <input class='checkbox1' id='activacion6' type='checkbox' value=''>
+                <input class='classTime' type='time' id='time6' value='00:00:00' step='1'>
+                <input class='checkbox1' id='lunesHorario6' type='checkbox' value=''>
+                <input class='checkbox1' id='martesHorario6' type='checkbox' value=''>
+                <input class='checkbox1' id='miercolesHorario6' type='checkbox' value=''>
+                <input class='checkbox1' id='juevesHorario6' type='checkbox' value=''>
+                <input class='checkbox1' id='viernesHorario6' type='checkbox' value=''>
+                <input class='checkbox1' id='sabadoHorario6' type='checkbox' value=''>
+                <input class='checkbox1' id='domingoHorario6' type='checkbox' value=''>
+                <input class='tiempoTimbre' id='duracionTimbre6' type='text' value=''>
+                <input class='checkbox1' id='activacion7' type='checkbox' value=''>
+                <input class='classTime' type='time' id='time7' value='00:00:00' step='1'>
+                <input class='checkbox1' id='lunesHorario7' type='checkbox' value=''>
+                <input class='checkbox1' id='martesHorario7' type='checkbox' value=''>
+                <input class='checkbox1' id='miercolesHorario7' type='checkbox' value=''>
+                <input class='checkbox1' id='juevesHorario7' type='checkbox' value=''>
+                <input class='checkbox1' id='viernesHorario7' type='checkbox' value=''>
+                <input class='checkbox1' id='sabadoHorario7' type='checkbox' value=''>
+                <input class='checkbox1' id='domingoHorario7' type='checkbox' value=''>
+                <input class='tiempoTimbre form-control' id='duracionTimbre7' type='text' value=''>
+                <input class='checkbox1' id='activacion8' type='checkbox' value=''>
+                <input class='classTime' type='time' id='time8' value='00:00:00' step='1'>
+                <input class='checkbox1' id='lunesHorario8' type='checkbox' value=''>
+                <input class='checkbox1' id='martesHorario8' type='checkbox' value=''>
+                <input class='checkbox1' id='miercolesHorario8' type='checkbox' value=''>
+                <input class='checkbox1' id='juevesHorario8' type='checkbox' value=''>
+                <input class='checkbox1' id='viernesHorario8' type='checkbox' value=''>
+                <input class='checkbox1' id='sabadoHorario8' type='checkbox' value=''>
+                <input class='checkbox1' id='domingoHorario8' type='checkbox' value=''>
+                <input class='tiempoTimbre' id='duracionTimbre8' type='text' value=''>
+                <input class='checkbox1' id='activacion9' type='checkbox' value=''>
+                <input class='classTime' type='time' id='time9' value='00:00:00' step='1'>
+                <input class='checkbox1' id='lunesHorario9' type='checkbox' value=''>
+                <input class='checkbox1' id='martesHorario9' type='checkbox' value=''>
+                <input class='checkbox1' id='miercolesHorario9' type='checkbox' value=''>
+                <input class='checkbox1' id='juevesHorario9' type='checkbox' value=''>
+                <input class='checkbox1' id='viernesHorario9' type='checkbox' value=''>
+                <input class='checkbox1' id='sabadoHorario9' type='checkbox' value=''>
+                <input class='checkbox1' id='domingoHorario9' type='checkbox' value=''>
+                <input class='tiempoTimbre' id='duracionTimbre9' type='text' value=''>
+                <input class='checkbox1' id='activacion10' type='checkbox' value=''>
+                <input class='classTime' type='time' id='time10' value='00:00:00' step='1'>
+                <input class='checkbox1' id='lunesHorario10' type='checkbox' value=''>
+                <input class='checkbox1' id='martesHorario10' type='checkbox' value=''>
+                <input class='checkbox1' id='miercolesHorario10' type='checkbox' value=''>
+                <input class='checkbox1' id='juevesHorario10' type='checkbox' value=''>
+                <input class='checkbox1' id='viernesHorario10' type='checkbox' value=''>
+                <input class='checkbox1' id='sabadoHorario10' type='checkbox' value=''>
+                <input class='checkbox1' id='domingoHorario10' type='checkbox' value=''>
+                <input class='tiempoTimbre' id='duracionTimbre10' type='text' value=''>
+                <input class='checkbox1' id='activacion11' type='checkbox' value=''>
+                <input class='classTime' type='time' id='time11' value='00:00:00' step='1'>
+                <input class='checkbox1' id='lunesHorario11' type='checkbox' value=''>
+                <input class='checkbox1' id='martesHorario11' type='checkbox' value=''>
+                <input class='checkbox1' id='miercolesHorario11' type='checkbox' value=''>
+                <input class='checkbox1' id='juevesHorario11' type='checkbox' value=''>
+                <input class='checkbox1' id='viernesHorario11' type='checkbox' value=''>
+                <input class='checkbox1' id='sabadoHorario11' type='checkbox' value=''>
+                <input class='checkbox1' id='domingoHorario11' type='checkbox' value=''>
+                <input class='tiempoTimbre' id='duracionTimbre11' type='text' value=''>
+                <input class='checkbox1' id='activacion12' type='checkbox' value=''>
+                <input class='classTime' type='time' id='time12' value='00:00:00' step='1'>
+                <input class='checkbox1' id='lunesHorario12' type='checkbox' value=''>
+                <input class='checkbox1' id='martesHorario12' type='checkbox' value=''>
+                <input class='checkbox1' id='miercolesHorario12' type='checkbox' value=''>
+                <input class='checkbox1' id='juevesHorario12' type='checkbox' value=''>
+                <input class='checkbox1' id='viernesHorario12' type='checkbox' value=''>
+                <input class='checkbox1' id='sabadoHorario12' type='checkbox' value=''>
+                <input class='checkbox1' id='domingoHorario12' type='checkbox' value=''>
+                <input class='tiempoTimbre' id='duracionTimbre12' type='text' value=''>
+                <input class='checkbox1' id='activacion13' type='checkbox' value=''>
+                <input class='classTime' type='time' id='time13' value='00:00:00' step='1'>
+                <input class='checkbox1' id='lunesHorario13' type='checkbox' value=''>
+                <input class='checkbox1' id='martesHorario13' type='checkbox' value=''>
+                <input class='checkbox1' id='miercolesHorario13' type='checkbox' value=''>
+                <input class='checkbox1' id='juevesHorario13' type='checkbox' value=''>
+                <input class='checkbox1' id='viernesHorario13' type='checkbox' value=''>
+                <input class='checkbox1' id='sabadoHorario13' type='checkbox' value=''>
+                <input class='checkbox1' id='domingoHorario13' type='checkbox' value=''>
+                <input class='tiempoTimbre' id='duracionTimbre13' type='text' value=''>
+                <input class='checkbox1' id='activacion14' type='checkbox' value=''>
+                <input class='classTime' type='time' id='time14' value='00:00:00' step='1'>
+                <input class='checkbox1' id='lunesHorario14' type='checkbox' value=''>
+                <input class='checkbox1' id='martesHorario14' type='checkbox' value=''>
+                <input class='checkbox1' id='miercolesHorario14' type='checkbox' value=''>
+                <input class='checkbox1' id='juevesHorario14' type='checkbox' value=''>
+                <input class='checkbox1' id='viernesHorario14' type='checkbox' value=''>
+                <input class='checkbox1' id='sabadoHorario14' type='checkbox' value=''>
+                <input class='checkbox1' id='domingoHorario14' type='checkbox' value=''>
+                <input class='tiempoTimbre' id='duracionTimbre14' type='text' value=''>
+                <input class='checkbox1' id='activacion15' type='checkbox' value=''>
+                <input class='classTime' type='time' id='time15' value='00:00:00' step='1'>
+                <input class='checkbox1' id='lunesHorario15' type='checkbox' value=''>
+                <input class='checkbox1' id='martesHorario15' type='checkbox' value=''>
+                <input class='checkbox1' id='miercolesHorario15' type='checkbox' value=''>
+                <input class='checkbox1' id='juevesHorario15' type='checkbox' value=''>
+                <input class='checkbox1' id='viernesHorario15' type='checkbox' value=''>
+                <input class='checkbox1' id='sabadoHorario15' type='checkbox' value=''>
+                <input class='checkbox1' id='domingoHorario15' type='checkbox' value=''>
+                <input class='tiempoTimbre' id='duracionTimbre15' type='text' value=''>
+            </div>
+            <div class="btn">
+                <button class="btntimbre" id="btnTimbre" value='Tocar' onclick='tocarTimbre()'>TIMBRE</button>
+                <button class="btnGuardar" id="btnGuardar" type='submit' value='Guardar'>GUARDAR</button>
+            </div>
+        </form>
+    </center>
+    <script src="../src/script/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <footer>
+        <div class="parrafo-footer">
+            <p class="parrafo-pie">© servidor de Horarios ESP32, todos los derechos reservados. Developed by electronica js</p>
+        </div>
+    </footer>
+</body>
+
+</html>
